@@ -1,0 +1,42 @@
+<div>
+  <h1 style="text-align: center; padding: '5px'">Employees</h1>
+  <button
+    (click)="onLogout()"
+    class="btn btn-primary btn-sm"
+    style="float: right; margin-right:'12px'">
+    Logout
+  </button>
+</div>
+
+<panel
+  [employeesCount]="getEmployeeCount()"
+  [appDevCount]="getDevEmployeesCount()"
+  [QACount]="getQAEmployeesCount()"
+  [supportCount]="getSupportEmployeesCount()">
+</panel>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">PSI</th>
+      <th scope="col">Division Unit</th>
+      <th scope="col">Project</th>
+      <th scope="col">Role</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <th scope="row">{{employees.indexOf(employee) + 1}}</th>
+      <td>{{employee.name}}</td>
+      <td>{{employee.psi}}</td>
+      <td>{{employee.division}}</td>
+      <td>{{employee.project}}</td>
+      <td>{{employee.role}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<a *ngIf="adminVisible" routerLink="/admin">Admin Dashboard</a>
